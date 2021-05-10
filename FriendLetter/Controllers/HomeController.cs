@@ -9,13 +9,13 @@ namespace FriendLetter.Controllers
     public string Hello() { return "Hello friend!"; }
 
     [Route("/goodbye")]
-    public string Goodbye() { return "Goodbye friend."; }
+    public string Goodbye() { return "Goodbye forever."; }
 
     [Route("/")]
-    public ActionResult Letter() 
-    {  
+    public ActionResult Letter()
+    {
       LetterVariable myLetterVariable = new LetterVariable();
-      myLetterVariable.Recipient = "Cristina, Patrick, Seth";
+      myLetterVariable.Recipient = "Cristina, Patrick, Seth, Bob, Samantha, Ernesto";
       myLetterVariable.Sender = "Tiffany the Bloodthirsty";
       return View(myLetterVariable);
     }
@@ -24,14 +24,17 @@ namespace FriendLetter.Controllers
     public ActionResult Form() { return View(); }
 
     [Route("/postcard")]
-    public ActionResult Postcard(string recipient, string sender)
+    public ActionResult Postcard(string recipient, string sender, string location, string souvenirs)
     {
       LetterVariable myLetterVariable = new LetterVariable();
       myLetterVariable.Recipient = recipient;
       myLetterVariable.Sender = sender;
+      myLetterVariable.Location = location;
+      myLetterVariable.Souvenirs = souvenirs;
       return View(myLetterVariable);
     }
-    
+
+
     [Route("/hamlet")]
     public string Hamlet() { return @"To be, or not to be, that is the question:
     Whether 'tis nobler in the mind to suffer
